@@ -34,10 +34,10 @@ void initialize(Edge *lineArr)
     lineArr[1].initialize(0, 7, 8);
     lineArr[2].initialize(1, 7, 11);
     lineArr[3].initialize(1, 2, 8);
-    lineArr[4].initialize(8, 2, 2);
-    lineArr[5].initialize(8, 7, 7);
-    lineArr[6].initialize(8, 6, 6);
-    lineArr[7].initialize(7, 6, 1);
+    lineArr[4].initialize(2, 8, 2);
+    lineArr[5].initialize(7, 8, 7);
+    lineArr[6].initialize(6, 8, 6);
+    lineArr[7].initialize(6, 7, 1);
     lineArr[8].initialize(2, 3, 7);
     lineArr[9].initialize(2, 5, 4);
     lineArr[10].initialize(5, 6, 2);
@@ -75,32 +75,70 @@ void showPrevious( int *previous, const int cPreviousSize)
     }
 }
 
-
-void kruscal (Edge *lineArr, const u_int cLineArrSize, int *previous,const u_int cPreviousSize)
+void pInitializing(int *p, int *previous, const u_int cPreviousSize)
 {
+    for (u_int i{0}; i != cPreviousSize; i++)
+    {
+        p[i] = previous[i];
+    }
+}
+
+bool isAdded(int *p, int *previous, const u_int cPreviousSize)
+{
+    for (u_int i{0}; i != cPreviousSize; i++)
+    {
+        if (p[i] != previous[i])
+        {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+void kruscal (Edge *lineArr, const u_int cLineArrSize, int *previous, const u_int cPreviousSize)
+{
+    int p[cPreviousSize];
+
+
     for (u_int i{0}; i < cLineArrSize; i++)
     {
-        if ( DSU::set_find(lineArr[i]) ) // ось тут не працює if
+        for (u_int i{0}; i != cPreviousSize; i++)
+        {
+            p[i] = previous[i];
+        }
+
+        if ( DSU::set_find(lineArr[i]) )
         {
             int temp = previous[lineArr[i].mSecondNode];
             DSU::set_union(lineArr[i],previous,cPreviousSize, temp);
 
-            if (i < 9)
+            if (lineArr[i].mWeight <= 9)
             {
-                out << "|  "<< i + 1 << "  | " << lineArr[i].mFirstNode + 1 << " ; "
+                out << "|  "<< lineArr[i].mWeight << "  | " << lineArr[i].mFirstNode + 1 << " ; "
                      << lineArr[i].mSecondNode + 1 << " | ";
                 showPrevious(previous, cPreviousSize);
 
-                out << "\n";
             }
             else
             {
-                out << "|  "<< i + 1 << " | " << lineArr[i].mFirstNode + 1 << " ; "
+                out << "|  "<< lineArr[i].mWeight  << " | " << lineArr[i].mFirstNode + 1 << " ; "
                      << lineArr[i].mSecondNode + 1 << " | ";
                 showPrevious(previous, cPreviousSize);
-                out << "\n";
+
+            }
+
+        }
+
+        for (u_int i{0}; i != cPreviousSize; i++)
+        {
+            if (p[i] != previous[i])
+            {
+                out << "added";
+                break;
             }
         }
+
+        out << "\n";
     }
 }
 

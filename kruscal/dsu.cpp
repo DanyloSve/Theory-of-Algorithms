@@ -11,10 +11,7 @@ void DSU::set_make(int *previous, const int cPreviousSize)
 
 bool DSU::set_find(Edge &A)
 {
-    bool result;
-    (A.mFirstNode != A.mSecondNode) ? (result = 1) : (result = 0);
-
-     return result;
+    return (A.mFirstNode != A.mSecondNode);
 }
 
 void DSU::set_union(Edge &A, int *previous, const int cPreviousSize, int &temp)
@@ -24,10 +21,8 @@ void DSU::set_union(Edge &A, int *previous, const int cPreviousSize, int &temp)
         if (previous[j] == temp)
         {
             previous[j]  = previous[A.mFirstNode];
-
         }
     }
-
 }
 
 

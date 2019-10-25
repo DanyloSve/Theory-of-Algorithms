@@ -7,7 +7,7 @@ struct Edge
     int mFirstNode;
     int mSecondNode;
 
-    void initialize(int a, int b, int weight)
+    void initialize(const int &a, const int &b,const int &weight)
     {
         mWeight = weight;
         mFirstNode = a;
