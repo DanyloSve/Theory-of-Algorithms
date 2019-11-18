@@ -4,6 +4,8 @@
 
 #include "separate-chaining.h"
 
+#include <cmath>
+
 SeparateChaining::SeparateChaining()
 {
     for (int i{0}; i != mHashTableSize; i++)
@@ -15,7 +17,12 @@ SeparateChaining::SeparateChaining()
 
 int SeparateChaining::hashFunction(const std::string key)
 {
-    return 'z' - key[0];
+    int r = 0;
+    for (int a: key)
+    {
+        r += a;
+    }
+    return abs(r) % mHashTableSize + 1;
 }
 
 Chain *createNew(std::string key)
