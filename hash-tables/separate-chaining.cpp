@@ -17,12 +17,13 @@ SeparateChaining::SeparateChaining()
 
 int SeparateChaining::hashFunction(const std::string key)
 {
-    int r = 0;
-    for (int a: key)
-    {
-        r += a;
-    }
-    return abs(r) % mHashTableSize + 1;
+//    int r = 0;
+//    for (int a: key)
+//    {
+//        r += a;
+//    }
+//    return abs(r) % mHashTableSize + 1;
+    return 'z' - key[0];
 }
 
 Chain *createNew(std::string key)
