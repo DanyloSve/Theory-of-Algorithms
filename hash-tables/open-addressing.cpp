@@ -10,7 +10,7 @@ OpenAddressing::OpenAddressing(int size)
 {
     for(int i{0}; i != mHashSize; i++)
     {
-        mHashTable.push_back(" ");
+        mHashTable.push_back(std::string());
     }
 }
 

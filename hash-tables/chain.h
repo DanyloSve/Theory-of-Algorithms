@@ -8,14 +8,12 @@ struct Chain
     Chain *mpNext;
     std::string mKey;
 
-    Chain(): mpNext{nullptr}, mKey{" "}
+    Chain(): mpNext{nullptr}, mKey{}
     {
-
     }
 
-    Chain(std::string key): mpNext{nullptr}, mKey{key}
+    Chain(const std::string &key): mpNext{nullptr}, mKey{key}
     {
-
     }
 };
 

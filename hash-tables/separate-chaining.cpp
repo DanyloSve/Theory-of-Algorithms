@@ -17,12 +17,12 @@ SeparateChaining::SeparateChaining()
 
 int SeparateChaining::hashFunction(const std::string key)
 {
-//    int r = 0;
-//    for (int a: key)
-//    {
-//        r += a;
-//    }
-//    return abs(r) % mHashTableSize + 1;
+    //    int r = 0;
+    //    for (int a: key)
+    //    {
+    //        r += a;
+    //    }
+    //    return abs(r) % mHashTableSize + 1;
     return 'z' - key[0];
 }
 
@@ -37,38 +37,38 @@ Chain *createNew(std::string key)
 
 void SeparateChaining::addKey(const std::string key)
 {
-        int index = hashFunction(key);
+    int index = hashFunction(key);
 
-        if (mHashTable[index].mKey == " ")
+    if (mHashTable[index].mKey.empty())
+    {
+        mHashTable[index].mKey = key;
+    }
+    else
+    {
+        Chain *pNewChain = &mHashTable[index];
+
+        while (pNewChain->mpNext)
         {
-            mHashTable[index].mKey = key;
+            pNewChain = pNewChain->mpNext;
         }
-        else
-        {
-           Chain *pNewChain = mHashTable[index].mpNext;
-
-           while (pNewChain)
-           {
-               pNewChain = pNewChain->mpNext;
-           }
-           pNewChain->mpNext = new Chain(key);
-
-         }
+        pNewChain->mpNext = new Chain(key);
+    }
 }
 
 void SeparateChaining::showHash()
 {
     for (int i{0}; i != mHashTableSize; i++)
     {
-        if (mHashTable[i].mpNext)
+        if (&mHashTable[i])
         {
             std::cout << i << " " << mHashTable[i].mKey;
 
             Chain *pTemp = mHashTable[i].mpNext;
-            while (pTemp != nullptr)
+            while (pTemp)
             {
                 std::cout << "->";
                 std::cout << pTemp->mKey;
+                pTemp = pTemp->mpNext;
             }
         }
         else
