@@ -16,7 +16,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        open-addressing.cpp \
         separate-chaining.cpp
 
 # Default rules for deployment.
@@ -26,5 +25,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     chain.h \
-    open-addressing.h \
     separate-chaining.h

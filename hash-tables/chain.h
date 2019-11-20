@@ -6,16 +6,15 @@
 struct Chain
 {
     Chain *mpNext;
+    int mData;
     std::string mKey;
 
-    Chain(): mpNext{nullptr}, mKey{" "}
+    Chain(): mpNext{nullptr}, mData{}, mKey{}
     {
-
     }
 
-    Chain(std::string key): mpNext{nullptr}, mKey{key}
+    Chain(const std::string &key, const int data): mpNext{nullptr}, mData{data}, mKey{key}
     {
-
     }
 };
 
