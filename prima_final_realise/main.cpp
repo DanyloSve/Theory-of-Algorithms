@@ -22,17 +22,17 @@ void prima()
            \ |     \  /    \  |
             [s4]-3-[s6]-(-2)-[s8]
      */
-    int sel_e[8][8] =
-    {
-        {0  ,   1,   2,   3, inf, inf, inf, inf},
-        {1  ,   0,   3, inf,   5, inf, inf, inf},
-        {2  ,   3,   0,  -2,   3,   4, inf, inf},
-        {3  , inf,  -2,   0, inf,   3, inf, inf},
-        {inf,   5,   3, inf,   0, inf,   1,   3},
-        {inf, inf,   4,   3, inf,   0,   2,  -1},
-        {inf, inf, inf, inf,   1,   2,   0,   4},
-        {inf, inf, inf, inf,   3,  -1,   4,   0}
-    };
+//    int sel_e[8][8] =
+//    {
+//        {0  ,   1,   2,   3, inf, inf, inf, inf},
+//        {1  ,   0,   3, inf,   5, inf, inf, inf},
+//        {2  ,   3,   0,  -2,   3,   4, inf, inf},
+//        {3  , inf,  -2,   0, inf,   3, inf, inf},
+//        {inf,   5,   3, inf,   0, inf,   1,   3},
+//        {inf, inf,   4,   3, inf,   0,   2,  -1},
+//        {inf, inf, inf, inf,   1,   2,   0,   4},
+//        {inf, inf, inf, inf,   3,  -1,   4,   0}
+//    };
 
     u_int n(8);
 
