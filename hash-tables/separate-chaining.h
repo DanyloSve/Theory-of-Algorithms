@@ -19,7 +19,7 @@ public:
     SeparateChaining();
     void createHash();
     void createHash(const int &size);
-    void addKey(const std::string key, const int &data);
+    void addKey(const std::string key, const std::string &data);
     void deleteKey(const std::string key);
     Chain *searchKey(const std::string key);
     void showHash();

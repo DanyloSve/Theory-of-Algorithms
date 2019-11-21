@@ -57,6 +57,14 @@ SeparateChaining::SeparateChaining()
 
 }
 
+Chain *createNew(std::string key)
+{
+    Chain *pNewChain = new Chain;
+    pNewChain->mKey = key;
+    pNewChain->mpNext = nullptr;
+
+    return pNewChain;
+}
 
 void SeparateChaining::increaseHash()
 {
@@ -65,7 +73,7 @@ void SeparateChaining::increaseHash()
     {
         if (&mHashTable[i])
         {
-            // тут доробити
+
             if (!mHashTable[i].mKey.empty())
             {
                 hashTableCopy.push_back(mHashTable[i]);
@@ -92,7 +100,7 @@ void SeparateChaining::increaseHash()
     for (int k{0}; k != prevHashSize; k++)
     {
         mHashTable[k].mKey = "";
-        mHashTable[k].mData = 0;
+        mHashTable[k].mData = "null";
         mHashTable[k].mpNext = nullptr;
     }
 
@@ -104,39 +112,43 @@ void SeparateChaining::increaseHash()
 
     mHashTableSize *= 2;
 
-    for (int j{0}; j!= prevHashSize; j++)
+
+    for (int j{0}; j!= hashTableCopy.size(); j++)
     {
         addKey(hashTableCopy[j].mKey, hashTableCopy[j].mData);
     }
 
 }
 
-void SeparateChaining::addKey(const std::string key, const int &data)
+void SeparateChaining::addKey(const std::string key, const std::string &data)
 {
     int index = hashFunction(key);
 
-    if (mHashTable[index].mKey.empty())
+    if (!searchKey(key))
     {
-        mHashTable[index].mKey = key;
-        mHashTable[index].mData = data;
-    }
-    else
-    {
-        Chain *pNewChain = &mHashTable[index];
-
-        while (pNewChain->mpNext)
+        if (mHashTable[index].mKey.empty())
         {
-            pNewChain = pNewChain->mpNext;
+            mHashTable[index].mKey = key;
+            mHashTable[index].mData = data;
         }
-        pNewChain->mpNext = new Chain(key, data);
-    }
+        else
+        {
+            Chain *pNewChain = &mHashTable[index];
 
-    int occupancy = hashOccupancy();
-    double hashOverload = static_cast<double>(occupancy) / mHashTableSize;
+            while (pNewChain->mpNext)
+            {
+                pNewChain = pNewChain->mpNext;
+            }
+            pNewChain->mpNext = new Chain(key, data);
+        }
 
-    if (hashOverload > 0.7)
-    {
-        increaseHash();
+        int occupancy = hashOccupancy();
+        double hashOverload = static_cast<double>(occupancy) / mHashTableSize;
+
+        if (hashOverload > 0.7)
+        {
+            increaseHash();
+        }
     }
 }
 
@@ -149,7 +161,7 @@ Chain *SeparateChaining::searchKey(const std::string key)
 
     if (mHashTable[index].mKey.empty())
     {
-        std::cout << "Such key is not found!\n";
+        //std::cout << "Such key is not found!\n";
         return nullptr;
     }
     else

@@ -6,16 +6,18 @@
 struct Chain
 {
     Chain *mpNext;
-    int mData;
+    std::string mData;
     std::string mKey;
 
-    Chain(): mpNext{nullptr}, mData{}, mKey{}
+
+    Chain(): mpNext{nullptr}, mData{"null"}, mKey{}
     {
     }
 
-    Chain(const std::string &key, const int data): mpNext{nullptr}, mData{data}, mKey{key}
+    Chain(const std::string &key, const std::string & data): mpNext{nullptr}, mData{data}, mKey{key}
     {
     }
+
 };
 
 #endif // CHAIN_H

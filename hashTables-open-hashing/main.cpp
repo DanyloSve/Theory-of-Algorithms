@@ -1,11 +1,9 @@
 #include <iostream>
-#include <string>
+#include "open-hashing.h"
 
-#include "separate-chaining.h"
-
-int main()
+int main(int argc, char *argv[])
 {
-    SeparateChaining S;
+    OpenHashing S;
     std::cout << "Set size for hash table?[Y/n]\n";
 
         char response;
@@ -45,7 +43,6 @@ int main()
         std::cout << "Input\n"
                      "1 - to add key\n"
                      "2 - to delete key\n"
-                     "3 - to find key\n"
                      "0 - to exit\n";
         int response;
         std::cout << "Your response: ";
@@ -111,8 +108,7 @@ int main()
                 std::cin.ignore(3000, '\n');
                 std::cout << "Input key to find: ";
             }
-            (S.searchKey(key)) ? (std::cout << "Such key exists\n")
-                               : (std::cout << "Such key doesnot exists!\n");
+
         }
             break;
 
@@ -122,6 +118,4 @@ int main()
         }
         S.showHash();
     }
-
-
 }
