@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     {
         std::cout << "Input: \n"
                      "1 - to add iteam\n"
-                     "2 - to sort\n"
+                     "2 - to countingSort\n"
                      "3 - to bucketSort\n"
                      "0 - to exit\n";
         std::cout << "Your response: ";
@@ -35,14 +35,13 @@ int main(int argc, char *argv[])
             int iteam;
             std::cout << "Input iteam to add: ";
             std::cin >> iteam;
-            //G.addIteam(iteam);
             v.push_back(iteam);
         }
             break;
 
         case 2 :
         {
-            G.sort(v);
+            G.countingSort(v);
         }
             break;
 

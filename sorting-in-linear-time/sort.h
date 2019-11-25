@@ -12,7 +12,7 @@ public:
     Sort();
     void addIteam(int iteam);
 
-    void sort(std::vector<int> &v);
+    void countingSort(std::vector<int> &v);
     void bucketSort(std::vector<int> &v);
 
 };

@@ -24,7 +24,7 @@ int Sort::getMaxIteam(std::vector<int> v)
 }
 
 
-void Sort::sort(std::vector<int> &v)
+void Sort::countingSort(std::vector<int> &v)
 {
     int maxIteam = getMaxIteam(v);
     std::vector<int> tempArr(maxIteam);
@@ -68,7 +68,7 @@ void Sort::bucketSort(std::vector<int> &v)
     {
         if (buckets[i].size() > 1)
         {
-            sort(buckets[i]);
+            countingSort(buckets[i]);
         }
     }
 
