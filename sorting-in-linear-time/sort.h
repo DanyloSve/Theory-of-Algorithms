@@ -10,8 +10,6 @@ private:
 
 public:
     Sort();
-    void addIteam(int iteam);
-
     void countingSort(std::vector<int> &v);
     void bucketSort(std::vector<int> &v);
 
