@@ -47,7 +47,11 @@ void MergeSort::mergeSort(int p, int q)
 
 void MergeSort::merge(int p, int c, int q)
 {
-    double b[v.size()];
+    std::vector <int> b;
+    for (int i{0}; i != v.size(); i++)
+    {
+        b.push_back(0);
+    }
 
     int i = p;
     int j = c + 1;
