@@ -26,7 +26,7 @@ int Sort::getMaxIteam(std::vector<int> v)
 void Sort::countingSort(std::vector<int> &v)
 {
     int maxIteam = getMaxIteam(v);
-    std::vector<int> tempArr(maxIteam);
+    std::vector<int> tempArr(maxIteam + 1);
 
     for (int i{0}; i != v.size(); i++)
     {
